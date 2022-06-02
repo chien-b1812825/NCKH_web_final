@@ -1,0 +1,207 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <base href="/">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css'%}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    {% comment %} {% if messages %}
+        <ul class="messages">
+    {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+        </ul>
+    {% endif %} {% endcomment %}
+
+    <!--Navbar-->
+    <nav class="navbar navbar-light">
+        <a class="navbar-brand">
+            <h3>Page For <span>Admin</span></h3>
+        </a>
+        <div class="right_items">
+            <div class="dropdown">
+                <button class="btn btn-sm btn-outline-none dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="u_name" style="color: aliceblue;">Hi, Ky Vuong</span> 
+                    <img src="{% static 'img/graduated.png' %}" alt="logo" class="avatar">
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#"><i class="fa fa-key"></i>Change Password</a>
+                    <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i> Log out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--Sidebar-->
+    <div class="left-pane">
+        <ul class="left-items" id="list"> 
+            <div class="first_item">
+                <center>
+                    <a href="#" class="wrapper"><img src="{% static 'img/logo.png' %}" alt="logo" class="profile_image"></a>
+                </center>
+            </div>
+            <hr class="seperator">
+            <li class="item">
+                <a href="{% url 'gettrainning' %}">
+                    <span class="icon"><ion-icon name="grid-outline"></ion-icon></span>
+                    <span class="title">Trainning</span>
+                </a>
+            </li>
+            <li class="item">
+                <a href="{% url 'getdetect' %}?type=PH">
+                    <span class="icon"><ion-icon name="camera-outline"></ion-icon></span>
+                    <span class="title">Attendance Out</span>
+                </a>
+            </li>
+            
+            <li class="item">
+                <a href="{% url 'getdetect' %}?type=HS">
+                    <span class="icon"><ion-icon name="alert-circle-outline"></ion-icon></span>
+                    <span class="title">Attendance In</span>
+                </a>
+            </li>
+            <hr class="seperator">
+            <li>
+                <img src="{% static 'img/space.jpg' %}" alt="" class="space_img">
+            </li>
+        </ul>
+    </div>
+
+    <!--Content-->
+    <div class="box-container">
+        <div class="row">
+            <div class="row">
+                <div class="col-md-12"></div>
+            </div>
+            
+            <div class="col-md-5">
+                <div class="hello-box">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="{% static 'img/house.png' %}" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <span class="text-style">Hi, Admin</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="notification-box">
+                    <div class="header-box">
+                        <img src="{% static 'img/megaphone.png' %}">
+                        <span class="notif-text"><a href="{% url 'stream' %}" style="text-decoration: none;">Xem Trực tuyến</a> </span>
+                    </div>
+                            
+                    <div class="content">
+                        <img src="{% static 'img/camera.jpg' %}" style="width: 250px; height: 250px; filter: contrast(120%);" alt="">
+                    </div>                    
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="message-box">
+                    <div class="message-header">
+                        <h3>Về Lớp Học</h3>
+                        <p>Chỉnh sửa lớp học</p>
+                        <hr class="seperator">
+                    </div>
+                    <div class="message-wrapper">
+                        <div class="message-content">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="{% static 'img/alien.png' %}">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="message-text">
+                                        <h4>Thêm học sinh</h4>
+                                        <p><a href="{% url 'getRegisterHS'%}">Tạo thông tin cho bé</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="message-content">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="{% static 'img/alien.png'%}" alt="">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="message-text">
+                                        <h4>Thêm phụ huynh</h4>
+                                        <p><a href="{% url 'getRegisterPH'%}">Tạo thông tin phụ huynh</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal-->
+    <div class="modal fade" id="student">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <!-- Modal Header -->
+                <div class="modal-header">
+                <h4 class="modal-title">Tạo học sinh mới</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+            <!-- Modal body -->
+                <form action="#" method="POST" role="form">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Tên học sinh</label>
+                            <input class="form-control" type="text" name="">
+                        </div>
+                        <div class="form-group">
+                            <label>Mã học sinh</label>
+                            <input class="form-control" type="text" name="">
+                        </div>
+                        <hr>
+                        <button class="col-md-12 btn " type="submit" style="background-color: #9066ff91;">Thêm mới</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="parent">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <!-- Modal Header -->
+                <div class="modal-header">
+                <h4 class="modal-title">Tạo phụ huynh mới</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+            <!-- Modal body -->
+                <form action="#" method="POST" role="form">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Tên phụ huynh</label>
+                            <input class="form-control" type="text" name="">
+                        </div>
+                        <div class="form-group">
+                            <label>Mã học sinh</label>
+                            <input class="form-control" type="text" name="">
+                        </div>
+                        <hr>
+                        <button class="col-md-12 btn " type="submit" style="background-color: #9066ff91;">Thêm mới</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>

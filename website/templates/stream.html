@@ -1,0 +1,87 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stream</title>
+    <base href="/">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css'%}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-light">
+        <a class="navbar-brand">
+            <h3>Page For <span>Admin</span></h3>
+        </a>
+        <div class="right_items">
+            <div class="dropdown">
+                <button class="btn btn-sm btn-outline-none dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="u_name" style="color: aliceblue;">Hi, Ky Vuong</span> 
+                    <img src="{% static 'img/graduated.png' %}" alt="logo" class="avatar">
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#"><i class="fa fa-key"></i>Change Password</a>
+                    <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i> Log out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--Sidebar-->
+    <div class="left-pane">
+        <ul class="left-items" id="list"> 
+            <div class="first_item">
+                <center>
+                    <a href="#" class="wrapper"><img src="{% static 'img/logo.png' %}" alt="logo" class="profile_image"></a>
+                </center>
+            </div>
+            <hr class="seperator">
+            <li class="item">
+                <a href="{% url 'dsdd' %}">
+                    <span class="icon"><ion-icon name="grid-outline"></ion-icon></span>
+                    <span class="title">Trainning</span>
+                </a>
+            </li>
+            <li class="item">
+                <a href="{% url 'getdetect' %}?type=PH">
+                    <span class="icon"><ion-icon name="camera-outline"></ion-icon></span>
+                    <span class="title">Attendance Out</span>
+                </a>
+            </li>
+            
+            <li class="item">
+                <a href="{% url 'getdetect' %}?type=HS">
+                    <span class="icon"><ion-icon name="alert-circle-outline"></ion-icon></span>
+                    <span class="title">Attendance In</span>
+                </a>
+            </li>
+            <hr class="seperator">
+            <li>
+                <img src="{% static 'img/space.jpg' %}" alt="" class="space_img">
+            </li>
+        </ul>
+    </div>
+
+    <!--Content-->
+    <div class="box-container" style="background: url('./img/background.jpg');background-size: cover;">
+        <div class="panel" style="height: 580px; width: 1050px;">
+            <div class="panel-header" style="text-align: center; background-color: #9066ff91;">
+                <h2>Xem Trực Tiếp</h2>
+            </div>
+            <div class="panel-content" style="height: 520px; width: 1050px; background-color: cadetblue;">
+                <img src="{% url 'video-feed' %}" alt="">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="./js/data.js"></script>
+</body>
+</html>
