@@ -199,7 +199,7 @@ def detect(type):
                 profile = getProfilee(id)
                 if(profile != None):
                     if type == "PH":
-                        cv2.putText(frame, "PH :" + str(profile) , (x+10, y+h+30), fontface, 1, (0, 255, 0), 1)
+                        cv2.putText(frame, "PH cua" + str(profile) , (x+10, y+h+30), fontface, 1, (0, 255, 0), 1)
                     else:      
                         cv2.putText(frame, "HS :" + str(profile) , (x+10, y+h+30), fontface, 1, (0, 255, 0), 1)
                         now = datetime.datetime.now()
