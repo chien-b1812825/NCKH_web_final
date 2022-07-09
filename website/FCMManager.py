@@ -2,7 +2,7 @@ import firebase_admin
 from firebase_admin import credentials, messaging
 
 # cred = credentials.Certificate("C:/Users/HP/Desktop/NCKH/website/serviceAccountKey.json")
-cred = credentials.Certificate("D:/Document/NCKH/nckh_v3/NCKH/website/serviceAccountKey.json")
+cred = credentials.Certificate("/home/pi/NCKH_web_final/website/serviceAccountKey.json")
 
 firebase_admin.initialize_app(cred)
 

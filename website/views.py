@@ -81,7 +81,7 @@ def postRegisterPH(request):
 
 def scanface(id,type):
     face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-    cap = cv2.VideoCapture(0,cv2.CAP_DSHOW)
+    cap = cv2.VideoCapture(0)
     count = 0
     while True:
         ret, frame = cap.read()
@@ -97,7 +97,6 @@ def scanface(id,type):
             else:
                 os.makedirs(MEDIA_ROOT.replace("\\", "/") + 'images')
                 cv2.imwrite(MEDIA_ROOT.replace("\\", "/") + 'images/User.' + str(type) +'.'+ str(id) + '.' + str(count) + '.jpg' , gray[y: y+h, x :x+w])
-
                 
         cv2.imshow('img', frame)
         
@@ -182,7 +181,7 @@ def detect(type):
 
     face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
-    cap = cv2.VideoCapture(0,cv2.CAP_DSHOW)
+    cap = cv2.VideoCapture(0)
     fontface = cv2.FONT_HERSHEY_SIMPLEX
 
     while True:
@@ -234,7 +233,7 @@ def stream_view(request):
 
 #bắt ngoại lệ đặt tên file media
 def stream():
-    cap = cv2.VideoCapture(0,cv2.CAP_DSHOW)
+    cap = cv2.VideoCapture(0)
     date = datetime.datetime.now().date()
     time = datetime.datetime.now().time().strftime("%H-%M-%S")
 
@@ -249,6 +248,7 @@ def stream():
             ret, frame = cap.read()
 
             if not ret:
+                print("Error : failed to capture image")
                 break
 
             video.write(frame)
